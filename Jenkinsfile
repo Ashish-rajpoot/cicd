@@ -9,12 +9,12 @@ pipeline {
 //     }
     stages {
 
-        stage('Compile Stage') {
-            steps {
-                echo '::::: Hello, Compile  :::::'
-                sh 'mvn clean compile'
-            }
-        }
+//         stage('Compile Stage') {
+//             steps {
+//                 echo '::::: Hello, Compile  :::::'
+//                 sh 'mvn clean compile'
+//             }
+//         }
 
         stage('mvn Build Stage') {
             steps {
