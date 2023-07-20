@@ -4,9 +4,9 @@ pipeline {
     jdk 'JDK17'
     maven 'maven 3.9.3'
   }
-    triggers {
-        pollSCM('* * * * *')
-    }
+//     triggers {
+//         pollSCM('* * * * *')
+//     }
     stages {
 
         stage('Compile Stage') {
