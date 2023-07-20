@@ -17,10 +17,10 @@ pipeline {
 //         }
 
         stage('mvn Build Stage') {
-            steps {
-                echo '::::: Hello, mvn Build stage  :::::'
-                sh 'mvn clean package -DskipTests'
-            }
+//             steps {
+//                 echo '::::: Hello, mvn Build stage  :::::'
+//                 sh 'mvn clean package -DskipTests'
+//             }
         }
        /*  stage('Docker Build Stage') {
             steps {
