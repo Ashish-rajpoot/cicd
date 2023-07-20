@@ -17,10 +17,11 @@ pipeline {
 //         }
 
         stage('mvn Build Stage') {
-//             steps {
-//                 echo '::::: Hello, mvn Build stage  :::::'
-//                 sh 'mvn clean package -DskipTests'
-//             }
+            steps {
+                echo '::::: Hello, mvn Build stage  :::::'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Ashish-rajpoot/cicd.git']])
+                sh 'mvn clean install -DskipTests'
+            }
         }
        /*  stage('Docker Build Stage') {
             steps {
