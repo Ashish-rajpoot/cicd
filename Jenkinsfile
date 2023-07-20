@@ -1,5 +1,15 @@
 pipeline {
     agent any
+
+    tools {
+        jdk 'JDK17'
+        maven 'maven 3.9.3'
+    }
+
+    triggers {
+        pollSCM('H/5 * * * *') // Poll every 5 minutes
+    }
+
     stages {
         stage('Compile Stage') {
             steps {
@@ -37,13 +47,13 @@ pipeline {
         stage('Deploy Stage') {
             steps {
                 echo 'Hello, Docker Deployment.'
-                bat '''
-                    if exist cicd (
+                sh '''
+                    if [ $(docker ps -a | grep cicd | cut -d " " -f1) ]; then
                         docker rm -f cicd
-                        echo ---------------- successfully removed cicd ----------------
-                    ) else (
+                        echo "---------------- successfully removed cicd ----------------"
+                    else
                         echo OK
-                    )
+                    fi
                     docker container run --restart always --name cicd -p 8081:8081 -d cicd
                 '''
             }
